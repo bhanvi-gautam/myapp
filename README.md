@@ -30,31 +30,31 @@ npm start
 The environment variables required for this application can be found below. They come with default values as follows:
 
 --------------------------------
-# Server environment
+### Server environment
 NODE_ENV=development
 
-# Port number
+### Port number
 PORT=3306
 
-# Database configuration
+### Database configuration
 DB_HOST=db-host
 DB_USER=db-user
 DB_PASS=db-pass
 DB_NAME=db-name
 
-# JWT secret key
+### JWT secret key
 JWT_SECRET=your-jwt-secret-key
-# Number of minutes after which an access token expires
+### Number of minutes after which an access token expires
 JWT_ACCESS_EXPIRATION_MINUTES=200
-# Number of days after which a refresh token expires
+### Number of days after which a refresh token expires
 JWT_REFRESH_EXPIRATION_DAYS=30
 
-# Log config
+### Log config
 LOG_FOLDER=logs/
 LOG_FILE=%DATE%-app-log.log
 LOG_LEVEL=error
 
-# Redis
+### Redis
 REDIS_HOST=redis-host
 REDIS_PORT=6379
 REDIS_USE_PASSWORD=no
@@ -71,6 +71,7 @@ This project utilizes Sequelize as an ORM for managing MySQL databases. To creat
 
 
 // db.sequelize.sync()
+
 // db.sequelize.sync({alter: true})
 
 
