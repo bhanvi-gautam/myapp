@@ -26,7 +26,8 @@ const Home = () => {
     getData({ id: userId})
       .unwrap()
       .then((fetchTodos) => {
-        setPosts(fetchTodos.data);
+        const data=decryptData(fetchTodos.encryptedData);
+        setPosts(data);
         if (value === 1000) {
           notifySuccess("Task Updated");
         }
