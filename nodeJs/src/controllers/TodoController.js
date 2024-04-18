@@ -22,13 +22,14 @@ class TodoController {
     }
   };
 
-  getTodos = async (req, res) => {
+ getTodos = async (req, res) => {
     try {
       const decryptedData = decryptData(req.body.id);
       const todo = await this.todoService.getTodos(decryptedData);
       const { status } = todo.response;
       const { message, data } = todo.response;
-      res.status(todo.statusCode).send({ status, message, data });
+      const encryptedData=encryptData(data);
+      res.status(todo.statusCode).send({ status, message, encryptedData });
     } catch (e) {
       logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
