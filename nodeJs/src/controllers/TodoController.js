@@ -58,7 +58,7 @@ class TodoController {
       );
       const { status } = todo.response;
       const { message, data } = todo.response;
-      res.status(todo.statusCode).send({ status, message, data });
+      res.status(todo.statusCode).send({ status, message});
     } catch (e) {
       logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
