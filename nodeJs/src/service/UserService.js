@@ -26,9 +26,9 @@ class UserService {
                 return responseHandler.returnError(httpStatus.BAD_REQUEST, 'username already taken');
             }
             const uuid = uuidv4();
-            userBody.first_name = userBody.firstName.toLowerCase();
-            userBody.last_name = userBody.lastName.toLowerCase();
-            userBody.username = userBody.username.toLowerCase();
+            userBody.first_name = userBody.firstName;
+            userBody.last_name = userBody.lastName;
+            userBody.username = userBody.username;
             userBody.phone_number = userBody.phnNumber;
             userBody.email = userBody.email;
             userBody.password = bcrypt.hashSync(userBody.password, 8);
