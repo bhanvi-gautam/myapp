@@ -12,12 +12,12 @@ const Settings = () => {
     const [posts, setPosts] = useState(post);
     const userId = localStorage.getItem('userId');
     const [formData, setFormData] = useState(post);
-    const [sendData]=useUpdateUserMutation();
+    const [sendData] = useUpdateUserMutation();
     const getUserInfo = async () => {
         getData({ userId: userId }).unwrap().then((data) => {
-        
+
             const decryptedData = decryptData(data.encryptedData);
-           
+
             setPosts(decryptedData);
             setFormData(decryptedData);
         })
@@ -26,18 +26,14 @@ const Settings = () => {
     useEffect(() => {
         getUserInfo();
     }, [])
-
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        const payload={data: formData};
-        const encryptedData=encryptData(payload)
-        sendData({encryptedData}).unwrap().then((data)=>{
+        const payload = { data: formData };
+        const encryptedData = encryptData(payload)
+        sendData({ encryptedData }).unwrap().then((data) => {
             getUserInfo();
             notifySuccess("Changes Updated")
-        }).catch((error)=>{
+        }).catch((error) => {
             console.log(error);
         })
     };
@@ -45,14 +41,14 @@ const Settings = () => {
     return (
         <>
             {isSuccess &&
-               <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <Row>
-    <Col md={6} className="mx-auto d-none d-md-block">
-      {/* Add your image here */}
-      <Image src={setting} alt="Profile Image" fluid />
-    </Col>
-    <Col xs={12} md={6}>
-                        
+                        <Col md={6} className="mx-auto d-none d-md-block">
+                            {/* Add your image here */}
+                            <Image src={setting} alt="Profile Image" fluid />
+                        </Col>
+                        <Col xs={12} md={6}>
+
                             <Card>
                                 <Card.Body>
                                     <Card.Title className="text-center mb-4">Update Profile</Card.Title>
@@ -63,9 +59,13 @@ const Settings = () => {
                                                 type="text"
                                                 name="firstName"
                                                 defaultValue={posts.first_name}
-                                                onChange={(e) =>
-                                                    setFormData({ ...formData, first_name: e.target.value })
-                                                }
+                                                onChange={(e) => {
+                                                    if (e.target.value !== '') {
+                                                        setFormData({ ...formData, first_name: e.target.value });
+                                                    }else{
+                                                        setFormData({...formData,first_name:posts.first_name})
+                                                    }
+                                                }}
                                             />
                                         </Form.Group>
 
@@ -75,9 +75,13 @@ const Settings = () => {
                                                 type="text"
                                                 name="lastName"
                                                 defaultValue={posts?.last_name}
-                                                onChange={(e) =>
+                                                onChange={(e) =>{
+                                                    if (e.target.value !== '') {
                                                     setFormData({ ...formData, last_name: e.target.value })
+                                                }else{
+                                                    setFormData({...formData,last_name:posts.last_name})
                                                 }
+                                            }}
                                             />
                                         </Form.Group>
 
@@ -88,8 +92,14 @@ const Settings = () => {
                                                 name="phoneNumber"
                                                 defaultValue={posts?.phone_number}
                                                 onChange={(e) =>
+                                                    {
+                                                        if (e.target.value !== '') {
                                                     setFormData({ ...formData, phone_number: e.target.value })
-                                                }
+                                                        }
+                                                        else{
+                                                            setFormData({...formData,phone_number:posts.phone_number})
+                                                        }
+                                                }}
                                             />
                                         </Form.Group>
 
@@ -99,8 +109,13 @@ const Settings = () => {
                                                 type="text"
                                                 name="username"
                                                 defaultValue={posts?.username}
-                                                onChange={(e) =>
+                                                onChange={(e) =>{
+                                                    if (e.target.value !== '') {
                                                     setFormData({ ...formData, username: e.target.value })}
+                                                    else{
+                                                        setFormData({...formData,username:posts.username})
+                                                    }
+                                                }}
                                             />
                                         </Form.Group>
 
@@ -110,9 +125,14 @@ const Settings = () => {
                                                 type="email"
                                                 name="email"
                                                 defaultValue={posts?.email}
-                                                onChange={(e) =>
+                                                onChange={(e) =>{
+                                                    if (e.target.value !== '') {
                                                     setFormData({ ...formData, email: e.target.value })
                                                 }
+                                                else{
+                                                    setFormData({...formData,email:posts.email})
+                                                }
+                                            }}
                                             />
                                         </Form.Group>
 
@@ -124,7 +144,7 @@ const Settings = () => {
                             </Card>
                         </Col>
                     </Row>
-                    <ToastContainer containerId="A"/>
+                    <ToastContainer containerId="A" />
                 </Container>
             }
         </>
