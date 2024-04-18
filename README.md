@@ -5,6 +5,17 @@
 
 This project is a simple todo list application with user authentication (login and signup) built using React.js, Node.js, Express, and MySQL. Users can perform CRUD operations on their todos after logging in. Additionally, users have the capability to update their details after logging in.
 
+## Prerequisites
+
+Before running this application, ensure that your system meets the following requirements:
+
+ Node.js (v14 or later) installed on your machine.
+
+ XAMPP installed for running MySQL server locally.
+
+ Redis server installed and running on your machine.
+
+
 ## Installation
 
 ### React.js
@@ -79,13 +90,6 @@ This project utilizes Sequelize as an ORM for managing MySQL databases. To creat
 5. Run your Node.js server.
 6. Uncomment the previously commented lines after the tables are created to prevent accidental alterations to the database structure.
 
-
-## Additional Notes
-
-- Make sure to replace placeholder values in the `.env` file with your actual configuration details.
-- Ensure that MySQL and Redis servers are running and accessible with the provided configurations.
-- For security reasons, do not expose sensitive information such as JWT secret keys or database credentials in your repository.
-- Consider implementing additional security measures such as input validation and authentication middleware to enhance the security of your application.
 
 ---
 
