@@ -51,7 +51,7 @@ const Login = () => {
                 <p className="login-card-description">Sign into your account</p>
                 <form onSubmit={handleSubmit} action="#!">
                   <div className="form-group">
-                    <label for="email" className="sr-only">
+                    <label htmlFor="email" className="sr-only">
                       Email
                     </label>
                     <input
@@ -64,7 +64,7 @@ const Login = () => {
                     />
                   </div>
                   <div className="form-group mb-4">
-                    <label for="password" className="sr-only">
+                    <label htmlFor="password" className="sr-only">
                       Password
                     </label>
                     <input
