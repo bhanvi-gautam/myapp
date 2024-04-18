@@ -111,7 +111,7 @@ class UserService {
 
       return responseHandler.returnSuccess(
         httpStatus.CREATED,
-        "todo deleted successfully",
+        "todo updated successfully",
         todos
       );
     } catch (e) {
