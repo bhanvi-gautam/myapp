@@ -28,7 +28,7 @@ const validationSchema = Yup.object({
   phnNumber: Yup.string()
     .matches(
       /^[6-9]\d{9}$/,
-      "Invalid phone number , phone number must be 10 digits long and must not contain any special characters or spaces"
+      "Invalid phone number. The phone number must meet the following criteria: \n\n1. It must be exactly 10 digits long. \n2. It must not contain any special characters or spaces. \n3. The first digit must be between 6 and 9. \n\nPlease enter a valid phone number."
     )
     .required("Contact number is required"),
 });
