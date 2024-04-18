@@ -12,6 +12,7 @@ This project is a simple todo list application with user authentication (login a
 Navigate to the `react-js` directory and run the following commands:
 
 npm install
+
 npm start
 
 
@@ -20,6 +21,7 @@ npm start
 Navigate to the `node-js` directory and run the following commands:
 
 npm install
+
 npm start
 
 
