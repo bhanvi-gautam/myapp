@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const TodoService = require("../service/TodoService");
 const logger = require("../config/logger");
-const { decryptData } = require("../security/EncryDecrypt");
+const { encryptData,decryptData } = require("../security/EncryDecrypt");
 
 class TodoController {
   constructor() {
